@@ -14,26 +14,17 @@
 				SemanticProperties.Description="dot net bot in a hovercraft number nine" />
 
 			<Label
-				x:Name="MainText"
-				Text="Who are you?"
+				Text="{Binding Text}"
 				Style="{StaticResource Headline}"
 				SemanticProperties.HeadingLevel="Level1" />
 
 			<Entry
-				x:Name="UserNameInput"
-				Placeholder="Tell me your name."
-				TextChanged="OnTextChanged" />
+				Text="{Binding Text, Mode=TwoWay}"
+				Placeholder="Tell me your name." />
 
 			<Button
-				x:Name="UserNameInputApply"
-				Text="Submit"
-				Clicked="OnUserNameApply" />
-
-			<Label
-				Text="Welcome to &#10;.NET Multi-platform App UI"
-				Style="{StaticResource SubHeadline}"
-				SemanticProperties.HeadingLevel="Level2"
-				SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+				Text="Clear"
+				Command="{Binding ClearTextCommand}" />
 		</VerticalStackLayout>
 	</ScrollView>
 
