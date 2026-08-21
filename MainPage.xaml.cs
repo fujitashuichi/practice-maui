@@ -2,22 +2,27 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+	public string? UserName { get; private set; } = null;
 
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object? sender, EventArgs e)
+	private void OnTextChanged(object? sender, TextChangedEventArgs e)
 	{
-		count++;
+		UserName = e.NewTextValue;
+	}
 
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
+	private void OnUserNameApply(object? sender, EventArgs e)
+	{
+		if (string.IsNullOrWhiteSpace(UserName))
+		{
+			MainText.Text = "Who are you?";
+		}
 		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		{
+			MainText.Text = $"Hello {UserName}!";
+		}
 	}
 }
